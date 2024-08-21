@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width" />
   <title>易冰</title>
   <link rel="canonical" href="https://yibing.me">
+  <script src="https://cdn.jsdelivr.net/npm/web3@4.11.1/dist/web3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/ethers.umd.min.js"></script>
 </head>
 <body>
   <h1>易冰</h1>
@@ -16,6 +18,31 @@
     <li><a href="https://github.com/lamengao">github.com/lamengao</a></li>
     <li><a href="https://www.facebook.com/bingyi">facebook.com/bingyi</a></li>
   </ul>
+<script type="text/javascript">
+    window.addEventListener('load', function() {
+        if (typeof window.ethereum !== 'undefined') {
+            window.web3 = new Web3(window.ethereum);
+        } else if (typeof window.web3 !== 'undefined') {
+            window.web3 = new Web3(window.web3.currentProvider);
+            console.log("Web3 has been initialized using the injected provider.");
+        } else {
+            window.web3 = new Web3('https://eth.llamarpc.com');
+            console.log("No web3 provider injected");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+  // Your code here...
+  if (window.ethereum == null) {
+      console.log("MetaMask not installed; using read-only defaults")
+      window.provider = ethers.getDefaultProvider()
+  } else {
+      window.provider = new ethers.BrowserProvider(window.ethereum)
+      // signer = await provider.getSigner();
+  }
+</script>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -24,7 +51,6 @@
 
   ga('create', 'UA-43311148-1', 'yibing.me');
   ga('send', 'pageview');
-
 </script>
 </body>
 </html>
